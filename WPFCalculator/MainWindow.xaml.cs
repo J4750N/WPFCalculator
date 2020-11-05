@@ -58,7 +58,6 @@ namespace WPFCalculator
             if (sender == Add_Button)
             {
                 selectedOperator = OperatorOptions.Addition;
-                
             }
             
 
@@ -87,7 +86,6 @@ namespace WPFCalculator
 
             double number;
             if (double.TryParse(Result.Content.ToString(), out number))
-                
             { 
                 
                     switch (selectedOperator)
@@ -130,7 +128,7 @@ namespace WPFCalculator
                            
                             break;
                     }
-                
+                Result.Content = result;
             }
         }
 
@@ -138,15 +136,15 @@ namespace WPFCalculator
         {
 
 
-            if (lastNumber == default(double))
-                {
+            if (lastNumber.ToString() != null)
+            {
                     Result.Content = ((lastNumber / 100) * Double.Parse(Result.Content.ToString())).ToString();
-                }
-                else
-                {
+            }
+            else
+            {
                     Result.Content = (Double.Parse(Result.Content.ToString()) * 0.01).ToString();
                     lastNumber = Double.Parse(Result.Content.ToString());
-                }
+            }
             
             
 
@@ -156,7 +154,9 @@ namespace WPFCalculator
         {
             Result.Content = "0";
             
+            
         }
+      
 
         public void Negative_Click(object sender, RoutedEventArgs e)
         {
